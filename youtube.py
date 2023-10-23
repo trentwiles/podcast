@@ -17,4 +17,11 @@ def getVideoMetadata(apiKey, id):
     desc = r.json()["items"][0]["snippet"]["description"]
     thumb = r.json()["items"][0]["snippet"]["thumbnails"]["medium"]["url"]
 
-    return {"title": title, "desc": desc, "thumbnail": thumb}
+    return {"title": title, "desc": desc, "thumbnail": thumb, "id": id}
+
+def getChannelVideosAndData(apiKey, id):
+    videos = getChannelVideos(apiKey, id)
+    data = []
+    for video in videos:
+        data.append(getVideoMetadata(apiKey, video))
+    return data

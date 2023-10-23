@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Northeastern Oakland Podcast</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Northeastern Oakland Podcast</h1>
+                <h2 class="subtitle">Lastest Podcasts</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section has-text-centered">
+        <h2 class="subtitle">Youtube Releases</h2>
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <div class="table-container">
+                        <table class="table">
+                            {% for video in videos %}
+                            <th><a href="https://www.youtube.com/watch?v={{video[" id"]}}" target="_blank"><img
+                                        src={{video["thumbnail"]}} /></a></th>
+                            <th>{{video["title"]}}</th>
+                            <th>{{video["desc"]}}</th>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

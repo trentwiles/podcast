@@ -1,3 +1,4 @@
 {
-    "youtube": "YOUTUBE_API_KEY"
+    "youtube": "YOUTUBE_API_KEY",
+    "channel": "YOUTUBE_CHANNEL_ID"
 }
