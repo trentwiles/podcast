@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Northeastern Oakland Podcast</title>
+    <title>Oakland Oddities | Northeastern Oakland Podcast Club</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
 </head>
 
@@ -11,21 +11,21 @@
     <section class="hero is-primary">
         <div class="hero-body">
             <div class="container">
-                <h1 class="title">Northeastern Oakland Podcast</h1>
-                <h2 class="subtitle">Lastest Podcasts</h2>
+                <h1 class="title">Oakland Oddities</h1>
+                <h2 class="subtitle">A Northeastern Oakland Podcast Club Project</h2>
             </div>
         </div>
     </section>
 
     <section class="section has-text-centered">
-        <h2 class="subtitle">Youtube Releases</h2>
+        <h2 class="subtitle"><a href="https://www.youtube.com/@NEUPodcastClub" target="_blank">Youtube Releases</a></h2>
         <div class="container">
             <div class="columns is-centered">
                 <div class="column is-half">
                     <div class="table-container">
                         <table class="table">
                             {% for video in videos %}
-                            <th><a href="https://www.youtube.com/watch?v={{video[" id"]}}" target="_blank"><img
+                            <th><a href='https://www.youtube.com/watch?v={{video["id"]}}' target="_blank"><img
                                         src={{video["thumbnail"]}} /></a></th>
                             <th>{{video["title"]}}</th>
                             <th>{{video["desc"]}}</th>
@@ -38,14 +38,14 @@
     </section>
 
     <section class="section has-text-centered">
-        <h2 class="subtitle">TikTok Posts</h2>
-        <div class="container">
+        <h2 class="subtitle"><a href="https://podcasters.spotify.com/pod/show/oaklandoddities" target="_blank">Spotify Releases</a></h2>
+        <div class="container is-centered">
             <div class="columns is-centered">
-                <div class="column is-half">
+                <div class="column is-three-fifths">
                     <div class="table-container">
                         <table class="table">
                             {% for podcast in podcasts %}
-                            <th><a href='{{podcast["link"]}}' target="_blank"><img src='{{podcast["image"]}}' /></a></th>
+                            <th><a href='{{podcast["link"]}}' target="_blank"><img src='{{podcast["image"]}}' width="50%" height="50%"/></a></th>
                             <th>{{podcast["title"]}} ({{podcast["time"]}})</th>
                             <th>{{podcast["description"]}}</th>
                             <th>
