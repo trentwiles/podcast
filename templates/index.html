@@ -36,6 +36,31 @@
             </div>
         </div>
     </section>
+
+    <section class="section has-text-centered">
+        <h2 class="subtitle">TikTok Posts</h2>
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <div class="table-container">
+                        <table class="table">
+                            {% for podcast in podcasts %}
+                            <th><a href='{{podcast["link"]}}' target="_blank"><img src='{{podcast["image"]}}' /></a></th>
+                            <th>{{podcast["title"]}} ({{podcast["time"]}})</th>
+                            <th>{{podcast["description"]}}</th>
+                            <th>
+                                <audio controls>
+                                    <source src='{{podcast["preview"]}}' type="audio/mpeg">
+                                  Your browser does not support the audio element.
+                                  </audio> 
+                            </th>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>
