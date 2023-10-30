@@ -5,9 +5,10 @@ import spotify
 import random
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/storage')
 app.secret_key = json.loads(open("config.json").read())["secret"]
 app.config['SESSION_TYPE'] = 'filesystem'
+app.static_folder = 'storage'
 
 @app.route('/')
 def index():
@@ -15,7 +16,8 @@ def index():
     channel = json.loads(open("config.json").read())["channel"]
     files = [os.path.join("storage", f) for f in os.listdir("storage") if os.path.isfile(os.path.join("storage", f))]
     files.sort(key=lambda x: os.path.getmtime(x))
-    files.remove("README.md")
+    files.remove("storage\README.md")
+    files.remove("storage\.gitignore")
 
     return render_template('index.html', videos = youtube.getChannelVideosAndData(apiKey, channel), podcasts=spotify.getPodcast(), files=files)
 
@@ -43,7 +45,7 @@ def uploadFile():
     if file.filename == '':
         return render_template("msg.html", msg="Select a file!")
     
-    valid = ["mp3", "wav", "aac", "ogg"]
+    valid = ["mp3", "wav"]
     if file.filename.split('.')[len(file.filename.split('.')) - 1] not in valid:
         return render_template("msg.html", msg=f"Bad File Extension (we accept {', '.join(valid)})")
 

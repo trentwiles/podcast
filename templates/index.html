@@ -40,7 +40,8 @@
     </section>
 
     <section class="section has-text-centered">
-        <h2 class="subtitle"><a href="https://podcasters.spotify.com/pod/show/oaklandoddities" target="_blank">Spotify Releases</a></h2>
+        <h2 class="subtitle"><a href="https://podcasters.spotify.com/pod/show/oaklandoddities" target="_blank">Spotify
+                Releases</a></h2>
         <div class="container is-centered">
             <div class="columns is-centered">
                 <div class="column is-three-fifths">
@@ -48,15 +49,40 @@
                         <table class="table">
                             {% for podcast in podcasts %}
                             <tr>
-                                <th><a href='{{podcast["link"]}}' target="_blank"><img src='{{podcast["image"]}}' width="50%" height="50%"/></a></th>
+                                <th><a href='{{podcast["link"]}}' target="_blank"><img src='{{podcast["image"]}}'
+                                            width="50%" height="50%" /></a></th>
                                 <th>{{podcast["title"]}} ({{podcast["time"]}})</th>
                                 <th>{{podcast["description"]}}</th>
                                 <th>
                                     <audio controls>
                                         <source src='{{podcast["preview"]}}' type="audio/mpeg">
-                                    Your browser does not support the audio element.
-                                    </audio> 
+                                        Your browser does not support the audio element.
+                                    </audio>
                                 </th>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section has-text-centered">
+        <h2 class="subtitle">Website Podcast Uploads</h2>
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <div class="table-container">
+                        <table class="table">
+                            {% for file in files %}
+                            <tr>
+                                <th>{{file}}</th>
+                                <th>
+                                    <audio controls>
+                                        <source src='/{{file}}' type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
                             </tr>
                             {% endfor %}
                         </table>
