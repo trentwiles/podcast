@@ -1,29 +1,40 @@
-from flask import Flask, render_template, session, request
+from flask import Flask, render_template, session, request, redirect
 import youtube
 import json
 import spotify
 import random
+import os
 
 app = Flask(__name__)
 app.secret_key = json.loads(open("config.json").read())["secret"]
+app.config['SESSION_TYPE'] = 'filesystem'
 
 @app.route('/')
 def index():
     apiKey = json.loads(open("config.json").read())["youtube"]
     channel = json.loads(open("config.json").read())["channel"]
-    return render_template('index.html', videos = youtube.getChannelVideosAndData(apiKey, channel), podcasts=spotify.getPodcast())
+    files = [os.path.join("storage", f) for f in os.listdir("storage") if os.path.isfile(os.path.join("storage", f))]
+    files.sort(key=lambda x: os.path.getmtime(x))
+    files.remove("README.md")
 
-@app.route('/upload')
+    return render_template('index.html', videos = youtube.getChannelVideosAndData(apiKey, channel), podcasts=spotify.getPodcast(), files=files)
+
+@app.route('/upload', methods=["GET"])
+def login():
+    return render_template('login.html')
+
+@app.route('/upload', methods=["POST"])
 def upload():
-    try:
-        if session['isLoggedIn'] != True:
-            return render_template("login.html")
-        return render_template('upload.html')
-    except:
-        return render_template('upload.html')
+
+    password = request.form.get("password")
+    if password == json.loads(open("config.json").read())["upload_password"]:
+        return render_template("upload.html")
+    return render_template("msg.html", msg="Incorrect Password")
 
 @app.route('/doUpload', methods=["POST"])
 def uploadFile():
+    # bad code, I should be using sessions, but i'm not
+
     if 'file' not in request.files:
         return render_template("msg.html", msg="Missing a file")
     
@@ -40,7 +51,6 @@ def uploadFile():
         filename = 'storage/' + str(random.randint(0,100000000)) + file.filename.replace(" ", "-")
         file.save(filename)
         return render_template("msg.html", msg=f"Uploaded podcast file {filename}")
-
 
 if __name__ == '__main__':
     app.run(debug=True)

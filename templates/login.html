@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Oakland Oddities | Northeastern Oakland Podcast Club</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Oakland Oddities</h1>
+                <h2 class="subtitle">A Northeastern Oakland Podcast Club Project</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section has-text-centered">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <h1 class="title">Enter Your Password to Upload</h1>
+                    <form method="POST" action="/upload" enctype="multipart/form-data">
+                        <div class="field">
+                            <label class="label">Password</label>
+                            <div class="control">
+                              <input class="input" name="password" id="password" type="text">
+                            </div>
+                          </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
