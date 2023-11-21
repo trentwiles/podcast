@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Northeastern Oakland Podcast</title>
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <!-- Bulma Version 0.9.4-->
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/forum.css">
+</head>
+
+<body>
+    <nav class="navbar is-white topNav">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="../">
+                    <!-- <img src="../images/bulma.png" width="112" height="28"> -->
+                    <h2 class="subtitle">Northeastern Oakland Podcast Club</h2>
+                </a>
+                <div class="navbar-burger burger" data-target="topNav">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="topNav" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="/">Home</a>
+                    <a class="navbar-item" href="/upload">Upload File</a>
+                    <a class="navbar-item" href="/about">About</a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <section class="container">
+        <h1 class="title pt-6">Latest Podcasts</h1>
+        <div class="columns">
+            <div class="column">
+                <div class="box content">
+                    {% for podcast in podcasts %}
+
+
+                    <article class="post">
+                        <h4><a href='{{podcast["link"]}}'>{{podcast["title"]}}</a></h4>
+                        <div class="media">
+                            <div class="media-left">
+                                <p class="image is-32x32">
+                                    <a href='' target="_blank"><img src='{{podcast["image"]}}' width="50%"
+                                            height="50%" /></a>
+                                </p>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        Published at {{podcast["time"]}}
+                                        <span class="tag">Spotify</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="media-right">
+                                <span class="has-text-grey-light"><i class="fa fa-comments"></i> 1</span>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                    {% for video in videos %}
+                    <article class="post">
+                        <h4><a href='https://www.youtube.com/watch?v={{video["id"]}}'>{{video["title"]}}</a></h4>
+                        <div class="media">
+                            <div class="media-left">
+                                <p class="image is-32x32">
+                                    <img src={{video["thumbnail"]}}>
+                                </p>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        {{video["desc"]}}
+                                        <span class="tag">YouTube</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="media-right">
+                                <span class="has-text-grey-light"><i class="fa fa-comments"></i> 0</span>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+
+                    {% for file in files %}
+                    <article class="post">
+                        <h4><a href="/{{file}}">{{file}}</a></h4>
+                        <div class="media">
+                            <div class="media-left">
+                                <p class="image is-32x32">
+                                    <img src="http://bulma.io/images/placeholders/128x128.png">
+                                </p>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <a href="#">@jsmith</a> replied 53 minutes ago &nbsp;
+                                        <span class="tag">Files</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="media-right">
+                                <span class="has-text-grey-light"><i class="fa fa-comments"></i> 13</span>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                    <article class="post">
+                        <h4>How to vertically center elements in Bulma?</h4>
+                        <div class="media">
+                            <div class="media-left">
+                                <p class="image is-32x32">
+                                    <img src="http://bulma.io/images/placeholders/128x128.png">
+                                </p>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <a href="#">@brown</a> replied 3 hours ago &nbsp;
+                                        <span class="tag">Question</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="media-right">
+                                <span class="has-text-grey-light"><i class="fa fa-comments"></i> 2</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="post">
+                        <h4>I'm trying to use hamburger menu on bulma css, but it doesn't work. What is wrong?</h4>
+                        <div class="media">
+                            <div class="media-left">
+                                <p class="image is-32x32">
+                                    <img src="http://bulma.io/images/placeholders/128x128.png">
+                                </p>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <a href="#">@hamburgler</a> replied 5 hours ago &nbsp;
+                                        <span class="tag">Question</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="media-right">
+                                <span class="has-text-grey-light"><i class="fa fa-comments"></i> 2</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="post">
+                        <h4>How to make tiles wrap with Bulma CSS?</h4>
+                        <div class="media">
+                            <div class="media-left">
+                                <p class="image is-32x32">
+                                    <img src="http://bulma.io/images/placeholders/128x128.png">
+                                </p>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <a href="#">@rapper</a> replied 3 hours ago &nbsp;
+                                        <span class="tag">Question</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="media-right">
+                                <span class="has-text-grey-light"><i class="fa fa-comments"></i> 2</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <div class="columns is-mobile is-centered">
+                    <div class="field is-grouped is-grouped-multiline">
+                        <div class="control">
+                            <div class="tags has-addons">
+                                <a class="tag is-link" href="https://github.com/BulmaTemplates/bulma-templates">Bulma
+                                    Templates</a>
+                                <span class="tag is-light">Daniel Supernault</span>
+                            </div>
+                        </div>
+                        <div class="control">
+                            <div class="tags has-addons">
+                                <a class="tag is-link">The source code is licensed</a>
+                                <span class="tag is-light">MIT &nbsp;<i class="fa fa-github"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script async type="text/javascript" src="../js/bulma.js"></script>
+</body>
+
+</html>
