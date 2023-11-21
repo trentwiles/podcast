@@ -1,4 +1,5 @@
 import requests
+import json
 
 def getChannelVideos(apiKey, id):
     r = requests.get(f"https://www.googleapis.com/youtube/v3/search?key={apiKey}&channelId={id}&part=id&maxResults=10")
@@ -12,6 +13,7 @@ def getChannelVideos(apiKey, id):
 
 def getVideoMetadata(apiKey, id):
     r = requests.get(f"https://www.googleapis.com/youtube/v3/videos?key={apiKey}&id={id}&part=snippet")
+    print(json.dumps(r.json()))
     
     title = r.json()["items"][0]["snippet"]["title"]
     desc = r.json()["items"][0]["snippet"]["description"]

@@ -18,5 +18,6 @@ def getPodcast():
 
     podcasts = []
     for x in r.json()["items"]:
-        podcasts.append({"preview": x["audio_preview_url"], "link": x["external_urls"]["spotify"], "description": x["description"], "time": str(x['duration_ms']/1000) + "s", "title": x["name"], "image": x["images"][0]["url"]})
+        #print(x)
+        podcasts.append({"preview": x["audio_preview_url"], "link": x["external_urls"]["spotify"], "description": x["description"], "time": str(round(x['duration_ms']/1000)) + "s", "title": x["name"], "image": x["images"][0]["url"]})
     return podcasts

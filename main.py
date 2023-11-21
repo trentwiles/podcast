@@ -21,9 +21,13 @@ def index():
 
     return render_template('new.html', videos = youtube.getChannelVideosAndData(apiKey, channel), podcasts=spotify.getPodcast(), files=files)
 
+@app.route('/about')
+def about():
+    return render_template("about.html")
+
 @app.route('/upload', methods=["GET"])
 def login():
-    return render_template('login.html')
+    return render_template('tupload.html')
 
 @app.route('/upload', methods=["POST"])
 def upload():
