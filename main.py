@@ -14,11 +14,6 @@ app.static_folder = 'storage'
 def index():
     apiKey = json.loads(open("config.json").read())["youtube"]
     channel = json.loads(open("config.json").read())["channel"]
-    files = [os.path.join("storage", f) for f in os.listdir("storage") if os.path.isfile(os.path.join("storage", f))]
-    files.sort(key=lambda x: os.path.getmtime(x))
-    files.remove("storage\README.md")
-    files.remove("storage\.gitignore")
-
     return render_template('new.html', videos = youtube.getChannelVideosAndData(apiKey, channel), podcasts=spotify.getPodcast())
 
 @app.route('/about')
