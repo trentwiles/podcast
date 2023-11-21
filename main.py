@@ -19,7 +19,7 @@ def index():
     files.remove("storage\README.md")
     files.remove("storage\.gitignore")
 
-    return render_template('new.html', videos = youtube.getChannelVideosAndData(apiKey, channel), podcasts=spotify.getPodcast(), files=files)
+    return render_template('new.html', videos = youtube.getChannelVideosAndData(apiKey, channel), podcasts=spotify.getPodcast())
 
 @app.route('/about')
 def about():
