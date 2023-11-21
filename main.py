@@ -59,4 +59,4 @@ def uploadFile():
         return render_template("msg.html", msg=f"Uploaded podcast file {filename}")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=49385)
